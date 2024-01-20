@@ -1,27 +1,24 @@
-# CarwashFrontend
+# Car Wash - Frontend (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+## Descripción
+Este es el proyecto frontend de la aplicación de Car Wash, desarrollado con Angular. Proporciona una interfaz de usuario interactiva y amigable para los clientes y usuarios del sistema de gestión de lavado de autos.
 
-## Development server
+## Características Principales
+1. **Reserva de Citas:** Permite a los clientes programar citas de lavado de autos de manera sencilla y conveniente.
+2. **Visualización de Historial:** Acceso al historial de servicios y detalles de transacciones anteriores.
+3. **Información del Servicio:** Despliega información detallada sobre los diferentes tipos de lavado y servicios ofrecidos.
+4. **Interfaz Intuitiva:** Diseño intuitivo y fácil de usar para una experiencia de usuario agradable.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Requisitos del Sistema
+- Node.js
+- Angular CLI
 
-## Code scaffolding
+## Instrucciones de Configuración
+1. Clona el repositorio desde GitHub: `git clone https://github.com/JostinSamuel/carwash-frontend.git`
+2. Navega al directorio del proyecto: `cd carwash-frontend`
+3. Instala las dependencias: `npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Ejecución del Proyecto
+Ejecuta el siguiente comando para iniciar la aplicación de Angular:
+```bash
+ng serve
