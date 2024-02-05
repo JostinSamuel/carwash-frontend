@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  app-navbar {
+    flex-grow: 0;
+    flex-basis: 200px;
+  }
+  
+  app-lista-servicios, router-outlet {
+    flex-grow: 1;
+  }
