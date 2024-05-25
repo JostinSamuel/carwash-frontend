@@ -1,5 +1,7 @@
-<div class="grid grid-cols-3 gap-4" *ngIf="servicios; else loading">
-    <div *ngFor="let servicio of servicios" class="max-w-sm rounded overflow-hidden shadow-lg">
+<div class="m-10">
+  <h1 class="text-3xl mb-6 text-center">Módulo Servicios</h1>
+  <div class="grid grid-cols-3 gap-4" *ngIf="servicios; else loading">
+    <div *ngFor="let servicio of servicios" class="max-w-xs rounded overflow-hidden shadow-lg">
       <img class="w-full" src="{{servicio.imagen}}" alt="Imagen de {{servicio.nombre}}">
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{servicio.nombre}}</div>
@@ -10,7 +12,8 @@
       </div>
     </div>
   </div>
-  
-  <ng-template #loading>
-    <p>Cargando servicios...</p>
-  </ng-template>
+</div>
+
+<ng-template #loading>
+  <p>Cargando servicios...</p>
+</ng-template>
