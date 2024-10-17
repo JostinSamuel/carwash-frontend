@@ -1,6 +1,55 @@
-<div class="m-4">
+<div class="relative py-3 h-20 w-25">
   <h1 class="text-2xl font-bold mb-4">Módulo Vehículos</h1>
+  <button (click)="openModal()" class="absolute top-0 right-0 rounded-md bg-green-400 p-5">Agregar</button>
+</div>
 
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4">{{ isModalEdit ? 'Actualizar Vehiculo' : 'Guardar Vehiculo' }}</h2>
+    <form (ngSubmit)="saveVehicle()">
+      <div class="mb-4">
+        <label for="placa" class="block text-gray-700">Placa</label>
+        <input type="text" id="placa" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.placa" name="placa" required>
+      </div>
+      <div class="mb-4">
+        <label for="marca" class="block text-gray-700">Marca</label>
+        <input type="text" id="marca" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.marca" name="marca" required>
+      </div>
+      <div class="mb-4">
+        <label for="modelo" class="block text-gray-700">Modelo</label>
+        <input type="text" id="modelo" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.modelo" name="modelo" required>
+      </div>
+      <div class="mb-4">
+        <label for="anio" class="block text-gray-700">Año</label>
+        <input type="number" id="anio" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.anio" name="anio" required>
+      </div>
+      <div class="mb-4">
+        <label for="color" class="block text-gray-700">Color</label>
+        <input type="text" id="color" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.color" name="color" required>
+      </div>
+      <div class="mb-4">
+        <label for="infoExtra" class="block text-gray-700">Información Extra</label>
+        <input type="text" id="infoExtra" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.infoExtra" name="infoExtra">
+      </div>
+      <div class="mb-4">
+        <label for="tipoVehiculo" class="block text-gray-700">Tipo Vehículo</label>
+        <select id="tipoVehiculo" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.tipoVehiculo" name="tipoVehiculo" required>
+          <option *ngFor="let tipo of tipoVehicles" [ngValue]="tipo">{{ tipo.tipoVehiculo }}</option>
+        </select>
+      </div>
+      
+      <div class="flex justify-end">
+        <button type="button" (click)="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2">Cancelar</button>
+        <div class="flex justify-end">
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+            {{ isModalEdit ? 'Actualizar' : 'Guardar' }}
+          </button>
+        </div>      </div>
+    </form>
+  </div>
+</div>
+<div>
   <table class="w-full table-auto">
     <thead>
       <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -24,10 +73,10 @@
         <td class="py-3 px-6 text-left">{{ vehiculo.infoExtra }}</td>
         <td class="py-3 px-6 text-left">{{ vehiculo.tipoVehiculo.tipoVehiculo }}</td>
         <td class="py-3 px-6 text-left">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button (click)="openModal(true, vehiculo)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             <i class="fas fa-pencil-alt"></i>
           </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button (click)="vehicleSelected(vehiculo.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             <i class="fas fa-trash"></i>
           </button>
         </td>
