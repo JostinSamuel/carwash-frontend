@@ -35,7 +35,9 @@
       <div class="mb-4">
         <label for="tipoVehiculo" class="block text-gray-700">Tipo Vehículo</label>
         <select id="tipoVehiculo" class="border border-gray-300 p-2 w-full" [(ngModel)]="newVehiculo.tipoVehiculo" name="tipoVehiculo" required>
-          <option *ngFor="let tipo of tipoVehicles" [ngValue]="tipo">{{ tipo.tipoVehiculo }}</option>
+          <option *ngFor="let tipo of tipoVehicles" [ngValue]="tipo">
+            {{ tipo.tipoVehiculo }}
+          </option>
         </select>
       </div>
       

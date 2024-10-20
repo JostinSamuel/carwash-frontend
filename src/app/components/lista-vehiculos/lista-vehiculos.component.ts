@@ -91,12 +91,6 @@ export class ListaVehiculosComponent {
         }
       );
     }
-}
-
-  
-  submitForm(){
-    console.log("MODAL");
-    
   }
 
   openModal(editMode: boolean = false, vehiculo?: Vehiculo) {
@@ -104,6 +98,11 @@ export class ListaVehiculosComponent {
     if (editMode && vehiculo) {
       // Si está en modo de edición, cargar los datos del vehículo
       this.newVehiculo = new Vehiculo({...vehiculo});    
+      const selectedTipoVehiculo = this.tipoVehicles.find(tipo => tipo.id === vehiculo.tipoVehiculo.id);
+      if (selectedTipoVehiculo) {
+        this.newVehiculo.tipoVehiculo = selectedTipoVehiculo;
+      }
+
     } else {
       // Si es un nuevo vehículo, reiniciar el formulario
       this.newVehiculo = new Vehiculo({

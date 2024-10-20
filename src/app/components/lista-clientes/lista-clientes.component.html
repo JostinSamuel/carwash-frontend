@@ -1,1 +1,118 @@
-<p>lista-clientes works!</p>
+<div class="relative py-3 h-20 w-25">
+    <h1 class="text-2xl font-bold mb-4">Módulo Clientes</h1>
+    <button
+      (click)="openModal()"
+      class="absolute top-0 right-0 rounded-md bg-green-400 p-5"
+    >
+      Agregar
+    </button>
+  </div>
+  
+  
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4">{{ isModalEdit ? 'Actualizar Cliente' : 'Guardar Cliente' }}</h2>
+    
+    <mat-horizontal-stepper linear #stepper>
+      <!-- Paso 1: Datos del Cliente -->
+      <mat-step [stepControl]="clienteFormGroup">
+        <form [formGroup]="clienteFormGroup">
+          <div class="mb-4">
+            <label for="nombre" class="block text-gray-700">Nombre</label>
+            <input type="text" id="nombre" class="border border-gray-300 p-2 w-full" formControlName="nombre" required>
+          </div>
+          <div class="mb-4">
+            <label for="apellido" class="block text-gray-700">Apellido</label>
+            <input type="text" id="apellido" class="border border-gray-300 p-2 w-full" formControlName="apellido" required>
+          </div>
+          <div class="mb-4">
+            <label for="dni" class="block text-gray-700">DNI</label>
+            <input type="text" id="dni" class="border border-gray-300 p-2 w-full" formControlName="dni" required>
+          </div>
+          <div class="mb-4">
+            <label for="telefono" class="block text-gray-700">Teléfono</label>
+            <input type="text" id="telefono" class="border border-gray-300 p-2 w-full" formControlName="telefono" required>
+          </div>
+          <div class="mb-4">
+            <label for="direccion" class="block text-gray-700">Dirección</label>
+            <input type="text" id="direccion" class="border border-gray-300 p-2 w-full" formControlName="direccion" required>
+          </div>
+          <div class="flex justify-end">
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Paso 2: Datos del Usuario -->
+      <mat-step [stepControl]="usuarioFormGroup">
+        <form [formGroup]="usuarioFormGroup">
+          <div class="mb-4">
+            <label for="id" class="block text-gray-700">ID</label>
+            <input type="text" id="id" class="border border-gray-300 p-2 w-full" formControlName="id" required>
+          </div>
+          <div class="mb-4">
+            <label for="username" class="block text-gray-700">Username</label>
+            <input type="text" id="username" class="border border-gray-300 p-2 w-full" formControlName="username" required>
+          </div>
+          <div class="mb-4">
+            <label for="password" class="block text-gray-700">Password</label>
+            <input type="password" id="password" class="border border-gray-300 p-2 w-full" formControlName="password" required>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700">Email</label>
+            <input type="email" id="email" class="border border-gray-300 p-2 w-full" formControlName="email" required>
+          </div>
+          <div class="mb-4">
+            <label for="role" class="block text-gray-700">Role</label>
+            <input type="text" id="role" class="border border-gray-300 p-2 w-full" formControlName="role" required>
+          </div>
+          <div class="flex justify-end">
+            <button mat-button matStepperPrevious class="bg-red-500 text-white px-4 py-2 rounded-md">Anterior</button>
+            <button mat-button matStepperNext class="bg-blue-500 text-white px-4 py-2 rounded-md" (click)="saveCliente()">Finalizar</button>
+          </div>
+          
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+
+    <div class="flex justify-end mt-4">
+      <button type="button" (click)="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded-md mr-2">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+
+  <div>
+    <table class="w-full table-auto">
+      <thead>
+        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+          <th class="py-3 px-6 text-left">Nombre</th>
+          <th class="py-3 px-6 text-left">Apellido</th>
+          <th class="py-3 px-6 text-left">DNI</th>
+          <th class="py-3 px-6 text-left">Teléfono</th>
+          <th class="py-3 px-6 text-left">Dirección</th>
+          <th class="py-3 px-6 text-left">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-600 text-sm font-light">
+        <tr class="border-b border-gray-200 hover:bg-gray-100" *ngFor="let cliente of clientes">
+          <td class="py-3 px-6 text-left">{{ cliente.nombre }}</td>
+          <td class="py-3 px-6 text-left">{{ cliente.apellido }}</td>
+          <td class="py-3 px-6 text-left">{{ cliente.dni }}</td>
+          <td class="py-3 px-6 text-left">{{ cliente.telefono }}</td>
+          <td class="py-3 px-6 text-left">{{ cliente.direccion }}</td>
+          <td class="py-3 px-6 text-left">
+            <button (click)="openModal(true, cliente)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button (click)="clienteSelected(cliente.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

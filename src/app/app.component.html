@@ -1,6 +1,10 @@
 <div class="flex">
-    <app-navbar class="w-64"></app-navbar>
+    <!-- Navbar solo si no estamos en la ruta de login -->
+    <app-navbar *ngIf="!isLoginRoute" class="w-64"></app-navbar>
+    
+    <!-- Contenido dinámico según la ruta -->
     <div class="flex-grow">
-     <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
-</div>
+  </div>
+  

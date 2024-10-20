@@ -2,7 +2,7 @@ module.exports = {
   content: {
     enabled: true,
     content: [
-      './src/**/*.{html,ts}',
+      "./src/**/*.{html,ts}"
     ]
   },
   media: false, // or 'media' or 'class'

@@ -1,0 +1,62 @@
+<div class="h-screen w-screen flex items-center justify-center bg-gray-100">
+    <mat-stepper [linear]="!isLinear" #stepper>
+        <mat-step [stepControl]="userData">
+            <form [formGroup]="userData" fxLayout="column" fxLayoutGap="10px"  class="w-full h-80 p-5">
+              <ng-template matStepLabel>Datos de Usuario</ng-template>
+          
+              <mat-form-field fxFlex>
+                <mat-label>Usuario</mat-label>
+                <input matInput placeholder="Ingrese usuario" formControlName="username" required>
+              </mat-form-field>
+          
+              <mat-form-field fxFlex>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Ingrese contraseña" formControlName="password" required>
+              </mat-form-field>
+          
+          
+              <mat-form-field fxFlex>
+                <mat-label>email</mat-label>
+                <input matInput placeholder="Ingrese email" formControlName="email" required>
+              </mat-form-field>
+          
+              <div>
+                <button class="bg-red-400 hover:bg-red-600 text-white py-2 px-4 mr-3 transition-colors duration-500 ease-in-out rounded !important"  (click)="goBack()">Atras</button>
+                <button matStepperNext class="bg-blue-400 hover:bg-blue-600 text-white py-2 px-4 transition-colors duration-500 ease-in-out rounded !important">Siguiente</button>
+              </div>
+            </form>
+          </mat-step>
+          
+        <mat-step [stepControl]="personalData" label="Datos Personales">
+            <form [formGroup]="personalData" fxLayout="column" fxLayoutGap="10px"  class="w-full h-full p-5">
+                <mat-form-field fxFlex>
+                    <mat-label>Nombres</mat-label>
+                    <input matInput formControlName="nombre" placeholder="Ingrese Nombres" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput formControlName="apellido" placeholder="Ingrese apellido" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>DNI</mat-label>
+                    <input matInput formControlName="dni" placeholder="Ingrese dni" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="telefono" placeholder="Ingrese telefono" required>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                    <mat-label>Dirección</mat-label>
+                    <input matInput formControlName="direccion" placeholder="Ingrese direccion" required>
+                </mat-form-field>
+                <div>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="saveData()">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
+
+</div>
