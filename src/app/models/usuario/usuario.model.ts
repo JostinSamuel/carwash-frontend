@@ -12,8 +12,6 @@ export class Usuario {
         this.role = data.role || 'user'
     }
 }
-
-
 export interface UsuarioInterface {
     id?: string;
     username?: string;
