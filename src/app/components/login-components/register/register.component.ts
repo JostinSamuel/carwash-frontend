@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit{
   userData = this._formBuilder.group({
     username : ['', Validators.required],
     password : ['', Validators.required],
-    email : ['', Validators.required],
     role : 'user'
   });
 
@@ -45,6 +44,7 @@ export class RegisterComponent implements OnInit{
     dni : ['', Validators.required],
     telefono : ['', Validators.required],
     direccion : ['', Validators.required],
+    email : ['', Validators.required],
   });
 
   constructor(
@@ -63,12 +63,11 @@ export class RegisterComponent implements OnInit{
       {
         username: form.username,
         password: form.password,
-        email: form.email,
         role: form.role
       }
     );
   }
-
+  
   fullUserData(form : any):Cliente{
     return new Cliente ({
       nombre: form.nombre,
@@ -76,6 +75,7 @@ export class RegisterComponent implements OnInit{
       dni: form.dni,
       telefono: form.telefono,
       direccion: form.direccion,
+      email: form.email
     })
   }
   goBack(){

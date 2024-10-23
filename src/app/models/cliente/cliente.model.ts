@@ -8,7 +8,7 @@ export class Cliente {
     public dni: string;
     public telefono: string;
     public direccion: string;
-    public usuario?: Usuario;
+    public email: string;
 
 
     constructor(data: Partial<Cliente>){
@@ -18,6 +18,6 @@ export class Cliente {
         this.dni = data.dni || '';
         this.telefono = data.telefono || '';
         this.direccion = data.direccion || '';
-        this.usuario = data.usuario ;
+        this.email = data.email || '';
     }
 }
